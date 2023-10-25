@@ -38,6 +38,7 @@ public class ArrayTools {
             }
         }
     }
+
     public static <T > void bableSort (T[]arr, Comparator<T> comparator){
         for (int i = 0; i < arr.length-1; i++) {
             for (int j = 0; j < arr.length-1; j++) {
@@ -49,5 +50,41 @@ public class ArrayTools {
             }
         }
     }
+    public static  <T >int binarySearch(T[] arr, T value,Comparator<T> comparator) {
+        int l = 0;
+        int r = arr.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (arr[mid] == value) {
+                return mid;
+            }
+            if (comparator.compare(value,arr[mid])  >0 ) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return -l-1;
+    }
+
+    public static <T extends Comparable <T  >>int binarySearch(T[] arr, T value) {
+        int l = 0;
+        int r = arr.length - 1;
+        while (l <= r) {
+            int mid = (l + r) / 2;
+            if (arr[mid].compareTo(value)==0 ) {
+                return mid;
+            }
+            if (value.compareTo(arr[mid]) > 0) {
+                l = mid + 1;
+            } else {
+                r = mid - 1;
+            }
+        }
+        return -l-1;
+    }
+
+
+
 
 }
